@@ -13,7 +13,7 @@ import pandas as pd
 from ISLP import load_data
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.metrics import mean_absolute_error, mean_squared_error
 import numpy as np
 
 # Step 2: Loaded the Boston dataset
@@ -59,19 +59,20 @@ mean_abs_residual_test = mean_absolute_error(y_test, y_test_pred)
 mean_residual_test = np.mean(test_residuals)
 
 # Step 7: Evaluation between predicted and test data
-print("\nMean Squared Error (MSE):", mse)
+print("\nMean Squared Error (MSE) for predicted and test data:", mse)
 
 #  OUTPUT for RSS
 print(f"RSS (Train): {rss_train:.2f}")
 print(f"RSS (Test): {rss_test:.2f}")
 
 #Output for RSS's statistics(train)
-print("\nResidual Statistics (Test Data):")
+print("\nResidual Statistics (Train Data):")
 print(f"  Max Residual (Absolute): {max_residual_train:.2f}")
 print(f"  Mean Absolute Residual: {mean_abs_residual_train:.2f}")
 print(f"  Mean Residual: {mean_residual_train:.2f}")
 
 #Output for RSS's statistics(test)
+print("\nResidual Statistics (Test Data):")
 print(f"  Max Residual (Absolute): {max_residual_test:.2f}")
 print(f"  Mean Absolute Residual: {mean_abs_residual_test:.2f}")
 print(f"  Mean Residual: {mean_residual_test:.2f}")
@@ -86,6 +87,7 @@ plt.axhline(y=0, color='black', linestyle='--')
 plt.title("Train Data Residual Plot")
 plt.xlabel("Actual MEDV") #prediction goal
 plt.ylabel("Residuals")
+plt.ylim(-10,30) #(-10,30)limit so that the maximum and minium residuals are covered
 
 # Plotting of test data
 plt.subplot(1, 2, 2)
@@ -94,6 +96,7 @@ plt.axhline(y=0, color='black', linestyle='--')
 plt.title("Test Data Residual Plot")
 plt.xlabel("Actual MEDV") #prediction_goal
 plt.ylabel("Residuals")
+plt.ylim(-10,30) #(-10,30)limit so that the maximum and minium residuals are covered
 
 plt.tight_layout()
 plt.show()
